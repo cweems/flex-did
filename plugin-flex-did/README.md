@@ -1,6 +1,11 @@
-# Your custom Twilio Flex Plugin
+# Flex DID Plugin
 
-Twilio Flex Plugins allow you to customize the appearance and behavior of [Twilio Flex](https://www.twilio.com/flex). If you want to learn more about the capabilities and how to use the API, check out our [Flex documentation](https://www.twilio.com/docs/flex).
+The Flex DID plugin provides two features:
+
+-   Agents can see their assigned phone number (`worker.phone_number`)
+-   Agents can initiate calls from their assigned phone number
+
+![Screen Shot 2021-01-10 at 11 02 48 PM](https://user-images.githubusercontent.com/1418949/104153867-4e604b00-5398-11eb-8bbc-d3cb66236532.png)
 
 ## Setup
 
@@ -9,10 +14,7 @@ Make sure you have [Node.js](https://nodejs.org) as well as [`npm`](https://npmj
 Afterwards, install the dependencies by running `npm install`:
 
 ```bash
-cd 
-
-# If you use npm
-npm install
+$ npm install
 ```
 
 ## Development
@@ -20,7 +22,7 @@ npm install
 In order to develop locally, you can use the Webpack Dev Server by running:
 
 ```bash
-npm start
+$ twilio flex:plugins:start
 ```
 
 This will automatically start up the Webpack Dev Server and open the browser for you. Your app will run on `http://localhost:3000`. If you want to change that you can do this by setting the `PORT` environment variable:
@@ -36,13 +38,9 @@ When you make changes to your code, the browser window will be automatically ref
 When you are ready to deploy your plugin, in your terminal run:
 
 ```bash
-npm run deploy
-```
+$ twilio flex:plugins:deploy --changelog "Deploying flex-did"
 
-This will publish your plugin as a Private Asset that is accessible by the Functions & Assets API. If you want to deploy your plugin as a Public Asset, you may pass --public to your deploy command:
-
-```bash
-npm run deploy --public
+$ twilio flex:plugins:release --plugin plugin-flex-did@0.0.1 --name "Flex DID" --description "Provides direct inward dial functionality."
 ```
 
 For more details on deploying your plugin, refer to the [deploying your plugin guide](https://www.twilio.com/docs/flex/plugins#deploying-your-plugin).
