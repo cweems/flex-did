@@ -1,0 +1,24 @@
+{
+  "name": "plugin-flex-did",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "postinstall": "flex-plugin pre-script-check",
+    "test": "jest"
+  },
+  "dependencies": {
+    "flex-plugin-scripts": "^4.3.5-beta.0",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@twilio/flex-ui": "^1",
+    "babel-jest": "^26.6.3",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "jest": "^26.6.3",
+    "react-test-renderer": "^17.0.1"
+  }
+}

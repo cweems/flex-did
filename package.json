@@ -1,0 +1,38 @@
+{
+  "name": "flex-did",
+  "version": "1.0.0",
+  "description": "Configure direct inward dialing for Twilio Flex",
+  "main": "buynumber.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flex-did-setup-all": "buy-numbers && workflow-setup && studio-setup && update-numbers"
+  },
+  "bin": {
+    "buy-numbers": "./setup-scripts/buyNumbers.js",
+    "studio-setup": "./setup-scripts/studioSetup.js",
+    "update-numbers": "./setup-scripts/updateNumbers.js",
+    "workflow-setup": "./setup-scripts/workflowSetup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cweems/flex-did.git"
+  },
+  "keywords": [
+    "twilio",
+    "flex",
+    "did",
+    "direct dial",
+    "direct inward dial",
+    "call center"
+  ],
+  "author": "Charlie Weems",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cweems/flex-did/issues"
+  },
+  "homepage": "https://github.com/cweems/flex-did#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "twilio": "^3.54.2"
+  }
+}
