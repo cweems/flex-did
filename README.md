@@ -10,6 +10,8 @@ Creates a Direct Inward Dial (DID) setup for Twilio Flex. Each agent can be assi
 
 Flex DID configures inbound phone numbers with a Studio Flow and TaskRouter Workflow that matches tasks to workers using a shared `phone_number` attribute.
 
+Not supported or maintained by Twilio. MIT License.
+
 ### Initial setup
 
 ```shell
