@@ -10,8 +10,6 @@ on:
 jobs:
   deployFlexPlugin:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./plugin-flex-did
     
     strategy:
       matrix:
@@ -26,7 +24,8 @@ jobs:
     - run: twilio plugins:install @twilio-labs/plugin-flex
     - run: export TWILIO_ACCOUNT_SID=${{ github.event.inputs.account_sid }}
     - run: export TWILIO_AUTH_TOKEN=${{ github.event.inputs.account_secret }}
-    - run: cd plugin-flex-did
     - run: npm install
+    - working-directory: ./plugin-flex-did
     - run: twilio flex:plugins:deploy --changelog "Deploying flex-did"
+    - working-directory: ./plugin-flex-did
     - run: twilio flex:plugins:release --plugin plugin-flex-did@0.0.1 --name "Flex DID" --description "Provides direct inward dial functionality."
