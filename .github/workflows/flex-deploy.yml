@@ -8,8 +8,10 @@ on:
         description: 'ACCOUNT SECRET'
         required: true
 jobs:
-  printInputs:
+  deployFlexPlugin:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./plugin-flex-did
     
     strategy:
       matrix:
