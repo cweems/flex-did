@@ -1,0 +1,8 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'ACCOUNT SID'     
+        required: true
+      tags:
+        description: 'ACCOUN SECRET'
