@@ -21,7 +21,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install twilio-cli -g
-    - run: twilio login ${{ github.event.inputs.account_sid }} --auth-token=${{ github.event.inputs.account_secret }} --profile="Github Action"
+    - run: export TWILIO_ACCOUNT_SID=${{ github.event.inputs.account_sid }}
+    - run: export TWILIO_AUTH_TOKEN=${{ github.event.inputs.account_secret }}
     - run: npm run flex-did-setup-all
     - run: cd plugin-flex-did
     - run: twilio flex:plugins:deploy --changelog "Deploying flex-did"
