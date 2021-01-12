@@ -1,15 +1,28 @@
 on: 
   workflow_dispatch:
     inputs:
-      logLevel:
+      account_sid:
         description: 'ACCOUNT SID'     
         required: true
-      tags:
-        description: 'ACCOUN SECRET'
+      account_secret:
+        description: 'ACCOUNT SECRET'
+        required: true
 jobs:
   printInputs:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-    - run: |
-        echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install twilio-cli -g
+    - run: twilio login ${{ github.event.inputs.account_sid }} --auth-token=${{ github.event.inputs.account-secret }} --profile="Github Action"
+    - run: npm run flex-did-setup-all
+    - run: cd plugin-flex-did
+    - run: twilio flex:plugins:deploy --changelog "Deploying flex-did"
+    - run: twilio flex:plugins:release --plugin plugin-flex-did@0.0.1 --name "Flex DID" --description "Provides direct inward dial functionality."
