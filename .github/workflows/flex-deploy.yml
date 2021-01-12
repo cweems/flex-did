@@ -23,7 +23,7 @@ jobs:
     - run: npm install twilio-cli -g
     - run: export TWILIO_ACCOUNT_SID=${{ github.event.inputs.account_sid }}
     - run: export TWILIO_AUTH_TOKEN=${{ github.event.inputs.account_secret }}
-    - run: npm run flex-did-setup-all
     - run: cd plugin-flex-did
+    - run: npm install
     - run: twilio flex:plugins:deploy --changelog "Deploying flex-did"
     - run: twilio flex:plugins:release --plugin plugin-flex-did@0.0.1 --name "Flex DID" --description "Provides direct inward dial functionality."
