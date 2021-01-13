@@ -20,6 +20,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm install  
     - run: npm install twilio-cli -g
     - run: twilio plugins:install @twilio-labs/plugin-flex
     - run: export TWILIO_ACCOUNT_SID=${{ github.event.inputs.account_sid }}
