@@ -20,15 +20,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install  
     - run: npm install twilio-cli -g
     - run: twilio plugins:install @twilio-labs/plugin-flex
     - run: export TWILIO_ACCOUNT_SID=${{ github.event.inputs.account_sid }}
     - run: export TWILIO_AUTH_TOKEN=${{ github.event.inputs.account_secret }}
     - run: npm install
       working-directory: ./plugin-flex-did
-    - run: ls -la
-      working-directory: ./plugin-flex-did
+    - run: cp appConfig.example.js appConfig.js
+      working-directory: ./plugin-flex-did/public
     - run: twilio flex:plugins:deploy --changelog "Deploying flex-did"
       working-directory: ./plugin-flex-did
     - run: twilio flex:plugins:release --plugin plugin-flex-did@0.0.1 --name "Flex DID" --description "Provides direct inward dial functionality."
