@@ -1,12 +1,6 @@
 on: 
-  workflow_dispatch:
-    inputs:
-      account_sid:
-        description: 'ACCOUNT SID'     
-        required: true
-      account_secret:
-        description: 'ACCOUNT SECRET'
-        required: true
+  workflow_dispatch
+  
 jobs:
   deployFlexPlugin:
     runs-on: ubuntu-latest
